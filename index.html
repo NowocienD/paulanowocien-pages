@@ -82,9 +82,11 @@
         </div>
 
         <div class="hero-media">
-          <div class="photo-card">
-            <!-- ZDJĘCIE 1 -->
-            <img class="photo-img" src="assets/paula-1.jpg" alt="Lek. Paula Nowocień – zdjęcie portretowe" />
+          <div class="photo-card hero-card">
+            <picture>
+              <source srcset="assets/paula-hero.webp" type="image/webp" />
+              <img class="photo-img hero-img" src="assets/paula-hero.jpg" alt="Lek. Paula Nowocień – zdjęcie wizerunkowe" />
+            </picture>
             <div class="photo-caption">
               <strong>Lek. Paula Nowocień</strong>
               <span>Endokrynologia • Obesitologia • Dietetyka</span>
@@ -145,8 +147,10 @@
 
         <div class="about-media">
           <div class="stack">
-            <!-- ZDJĘCIE 2 -->
-            <img class="photo-img tall" src="assets/paula-2.jpg" alt="Lek. Paula Nowocień – zdjęcie w pracy / gabinet" />
+            <picture>
+              <source srcset="assets/paula-about.webp" type="image/webp" />
+              <img class="photo-img tall about-img" src="assets/paula-about.jpg" alt="Lek. Paula Nowocień – zdjęcie w fartuchu" />
+            </picture>
             <div class="note">
               <strong>Działalność naukowa:</strong> autorka publikacji naukowych (m.in. <em>Endokrynologia Polska</em>), doktorantka szkoły doktorskiej, praca nad kolejnymi publikacjami.
             </div>
@@ -256,15 +260,17 @@
               Aktualnie pracuję nad kolejnymi publikacjami naukowymi dotyczącymi zaburzeń metabolicznych oraz leczenia choroby otyłościowej.
             </p>
             <p class="tiny muted">
-              (Jeśli chcesz, dodamy tu listę tytułów/DOI – świetnie działa wizerunkowo i pod SEO.)
+              (Możemy tu dodać listę tytułów/DOI – to bardzo dobrze wygląda i pomaga w SEO.)
             </p>
           </div>
         </div>
 
         <div class="about-media">
           <div class="stack">
-            <!-- ZDJĘCIE 3 -->
-            <img class="photo-img tall" src="assets/paula-3.jpg" alt="Lek. Paula Nowocień – zdjęcie dodatkowe" />
+            <picture>
+              <source srcset="assets/paula-science.webp" type="image/webp" />
+              <img class="photo-img tall science-img" src="assets/paula-science.jpg" alt="Lek. Paula Nowocień – zdjęcie naukowe" />
+            </picture>
             <div class="note">
               <strong>Nowoczesna opieka:</strong> diagnostyka, terapia, monitorowanie i prowadzenie długoterminowe.
             </div>
@@ -352,7 +358,7 @@
         <div class="contact-card">
           <h2>Umów konsultację online</h2>
           <p class="muted">
-            Najszybciej przez EDM. Jeśli chcesz dopytać o dobór usługi, napisz wiadomość (formularz prototypowy).
+            Najszybciej przez EDM. Jeśli chcesz dopytać o dobór usługi, wyślij krótką wiadomość.
           </p>
 
           <div class="contact-actions">
@@ -360,7 +366,7 @@
             <a class="btn ghost" href="https://instagram.com/doktor_paula" target="_blank" rel="noopener">Instagram</a>
           </div>
 
-          <form class="form" id="contactForm">
+          <form class="form" id="contactForm" data-mailto-form>
             <div class="form-row">
               <label>
                 Imię (opcjonalnie)
@@ -377,9 +383,9 @@
             </label>
 
             <div class="form-bottom">
-              <button class="btn small primary" type="submit">Wyślij (prototyp)</button>
+              <button class="btn small primary" type="submit">Wyślij</button>
               <p class="tiny muted">
-                Formularz jest prototypowy – w JS jest tylko symulacja. Podłączysz go później do EDM / maila / API.
+                Po kliknięciu otworzy się Twoja poczta z gotową wiadomością do wysłania.
               </p>
             </div>
             <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>

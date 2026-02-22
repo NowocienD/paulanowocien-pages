@@ -32,8 +32,8 @@ if (toggle && nav) {
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// Prototype form submission (no backend)
-const form = document.getElementById('contactForm');
+// Mailto form (no backend)
+const form = document.querySelector('[data-mailto-form]');
 const statusEl = document.getElementById('formStatus');
 
 if (form && statusEl) {
@@ -41,6 +41,7 @@ if (form && statusEl) {
     e.preventDefault();
 
     const data = new FormData(form);
+    const name = (data.get('name') || '').toString().trim();
     const email = (data.get('email') || '').toString().trim();
     const message = (data.get('message') || '').toString().trim();
 
@@ -49,8 +50,22 @@ if (form && statusEl) {
       return;
     }
 
-    // Symulacja wysyłki
-    statusEl.textContent = 'Wysłano (symulacja). Podłączymy to później do EDM / maila / API.';
-    form.reset();
+    const to = 'lekarz.obesitolog@gmail.com';
+    const subject = '[PAULA-LEAD][WWW] Wiadomość z formularza';
+    const body =
+      `Imię: ${name || '-'}\n` +
+      `E-mail: ${email}\n\n` +
+      `Wiadomość:\n${message}\n\n` +
+      `---\n` +
+      `Źródło: strona (GitHub Pages)\n` +
+      `Data: ${new Date().toISOString()}\n`;
+
+    const mailto =
+      `mailto:${encodeURIComponent(to)}` +
+      `?subject=${encodeURIComponent(subject)}` +
+      `&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailto;
+    statusEl.textContent = 'Otwieram klienta poczty z gotową wiadomością…';
   });
 }
