@@ -1,71 +1,178 @@
-// Mobile nav toggle
-const toggle = document.querySelector('.nav-toggle');
+
+// ========================================
+// CENTRALNA KONFIGURACJA LINKÓW
+// edytujesz tylko tutaj w przyszłości
+// ========================================
+
+const LINKS = {
+
+  edm: '/edm1',
+
+  instagram: '/instagram'
+
+};
+
+
+// automatyczne ustawienie href dla wszystkich data-link
+
+document.querySelectorAll('[data-link]').forEach(element => {
+
+  const key = element.dataset.link;
+
+  if (LINKS[key]) {
+
+    element.href = LINKS[key];
+
+  }
+
+});
+
+
+
+// ========================================
+// MENU MOBILNE
+// ========================================
+
+const navToggle = document.querySelector('.nav-toggle');
+
 const nav = document.querySelector('.nav');
 
-if (toggle && nav) {
-  toggle.addEventListener('click', () => {
+
+if (navToggle && nav) {
+
+  navToggle.addEventListener('click', () => {
+
     const isOpen = nav.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', String(isOpen));
+
+    navToggle.setAttribute('aria-expanded', isOpen);
+
   });
 
-  // Close menu after clicking a link (mobile)
-  nav.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      if (nav.classList.contains('open')) {
-        nav.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-  });
 
-  // Close on outside click
-  document.addEventListener('click', (e) => {
-    const clickedInside = nav.contains(e.target) || toggle.contains(e.target);
-    if (!clickedInside && nav.classList.contains('open')) {
+  // zamknij po kliknięciu linku
+
+  nav.querySelectorAll('a').forEach(link => {
+
+    link.addEventListener('click', () => {
+
       nav.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-    }
+
+      navToggle.setAttribute('aria-expanded', false);
+
+    });
+
   });
+
+
+  // zamknij po kliknięciu poza menu
+
+  document.addEventListener('click', (event) => {
+
+    const clickedInside =
+
+      nav.contains(event.target) ||
+
+      navToggle.contains(event.target);
+
+
+    if (!clickedInside) {
+
+      nav.classList.remove('open');
+
+      navToggle.setAttribute('aria-expanded', false);
+
+    }
+
+  });
+
 }
 
-// Year in footer
-const yearEl = document.getElementById('year');
-if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// Mailto form (no backend)
+
+// ========================================
+// ROK W STOPCE
+// ========================================
+
+const yearElement = document.getElementById('year');
+
+if (yearElement) {
+
+  yearElement.textContent = new Date().getFullYear();
+
+}
+
+
+
+// ========================================
+// FORMULARZ → MAILTO
+// ========================================
+
 const form = document.querySelector('[data-mailto-form]');
-const statusEl = document.getElementById('formStatus');
 
-if (form && statusEl) {
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
+const formStatus = document.getElementById('formStatus');
 
-    const data = new FormData(form);
-    const name = (data.get('name') || '').toString().trim();
-    const email = (data.get('email') || '').toString().trim();
-    const message = (data.get('message') || '').toString().trim();
+
+if (form && formStatus) {
+
+  form.addEventListener('submit', (event) => {
+
+    event.preventDefault();
+
+
+    const formData = new FormData(form);
+
+
+    const name = (formData.get('name') || '').trim();
+
+    const email = (formData.get('email') || '').trim();
+
+    const message = (formData.get('message') || '').trim();
+
 
     if (!email || !message) {
-      statusEl.textContent = 'Uzupełnij e-mail i wiadomość.';
+
+      formStatus.textContent = 'Uzupełnij e-mail i wiadomość.';
+
       return;
+
     }
 
-    const to = 'lekarz.obesitolog@gmail.com';
-    const subject = '[PAULA-LEAD][WWW] Wiadomość z formularza';
+
+    const subject =
+
+      '[PAULA-LEAD][WWW] Wiadomość z formularza';
+
+
     const body =
-      `Imię: ${name || '-'}\n` +
-      `E-mail: ${email}\n\n` +
-      `Wiadomość:\n${message}\n\n` +
-      `---\n` +
-      `Źródło: strona (GitHub Pages)\n` +
-      `Data: ${new Date().toISOString()}\n`;
 
-    const mailto =
-      `mailto:${encodeURIComponent(to)}` +
-      `?subject=${encodeURIComponent(subject)}` +
-      `&body=${encodeURIComponent(body)}`;
+`Imię: ${name || '-'}
+E-mail: ${email}
 
-    window.location.href = mailto;
-    statusEl.textContent = 'Otwieram klienta poczty z gotową wiadomością…';
+Wiadomość:
+${message}
+
+---
+Strona: paulanowocien.pl
+Data: ${new Date().toLocaleString()}
+`;
+
+
+    const mailtoLink =
+
+      'mailto:lekarz.obesitolog@gmail.com'
+
+      + '?subject=' + encodeURIComponent(subject)
+
+      + '&body=' + encodeURIComponent(body);
+
+
+    window.location.href = mailtoLink;
+
+
+    formStatus.textContent =
+
+      'Otwieram klienta poczty...';
+
   });
+
 }
