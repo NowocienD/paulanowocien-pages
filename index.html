@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/css/bmi-calculator.css" />
 </head>
 <body>
   <a class="skip-link" href="#main">Przejdź do treści</a>
@@ -28,6 +29,7 @@
 
       <nav class="nav" id="nav" aria-label="Menu główne">
         <a href="#offer">Oferta</a>
+        <a href="#kalkulator-bmi">Kalkulator BMI</a>
         <a href="#about">O mnie</a>
         <a href="#process">Jak pracuję</a>
         <a href="#faq">FAQ</a>
@@ -161,7 +163,7 @@
               <li>Monitoring postępów</li>
             </ul>
             <div class="card-actions">
-              <a class="btn small primary js-booking-link" href="#">Sprawdź terminy</a>
+              <a class="btn small primary" href="#kalkulator-bmi">Sprawdź kwalifikację</a>
             </div>
           </div>
 
@@ -178,6 +180,102 @@
               <a class="btn small ghost" href="#contact">Zapytaj o szczegóły</a>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BMI CALCULATOR -->
+    <section class="section alt" id="kalkulator-bmi">
+      <div class="container">
+        <div class="section-head">
+          <h2>Kalkulator BMI i kwalifikacja do leczenia</h2>
+          <p>Sprawdź swój wskaźnik masy ciała oraz czy kwalifikujesz się do nowoczesnego leczenia otyłości.</p>
+        </div>
+
+        <div class="bmi-calculator">
+          <div class="bmi-grid">
+            <div class="bmi-form-group">
+              <div class="bmi-inputs">
+                <div class="bmi-field">
+                  <label for="bmi-weight">Masa ciała (kg)</label>
+                  <input type="number" id="bmi-weight" min="20" max="400" step="0.1" placeholder="np. 83.5">
+                  <span class="bmi-error" id="error-weight">Podaj wagę od 20 do 400 kg</span>
+                </div>
+                <div class="bmi-field">
+                  <label for="bmi-height">Wzrost (cm)</label>
+                  <input type="number" id="bmi-height" min="120" max="230" step="1" placeholder="np. 175">
+                  <span class="bmi-error" id="error-height">Podaj wzrost od 120 do 230 cm</span>
+                </div>
+              </div>
+
+              <div class="bmi-comorbidities">
+                <h4>Choroby współistniejące</h4>
+                <div class="bmi-checkboxes">
+                  <label class="bmi-checkbox-item">
+                    <input type="checkbox" class="bmi-checkbox" value="diabetes">
+                    <span>Zaburzenia gospodarki węglowodanowej (stan przedcukrzycowy lub cukrzyca typu 2) – <a href="https://www.mp.pl/cukrzyca/cukrzyca/typ2/65891,cukrzyca-typu-2" target="_blank" rel="noopener">info</a></span>
+                  </label>
+                  <label class="bmi-checkbox-item">
+                    <input type="checkbox" class="bmi-checkbox" value="hypertension">
+                    <span>Nadciśnienie tętnicze – <a href="https://www.mp.pl/pacjent/nadcisnienie/informacje/cisnienie_nadcisnienie/58698,nadcisnienie-tetnicze" target="_blank" rel="noopener">info</a></span>
+                  </label>
+                  <label class="bmi-checkbox-item">
+                    <input type="checkbox" class="bmi-checkbox" value="dyslipidemia">
+                    <span>Dyslipidemia</span>
+                  </label>
+                  <label class="bmi-checkbox-item">
+                    <input type="checkbox" class="bmi-checkbox" value="osa">
+                    <span>Obturacyjny bezdech senny – <a href="https://www.mp.pl/pacjent/pulmonologia/choroby/74636,obturacyjny-bezdech-senny" target="_blank" rel="noopener">info</a></span>
+                  </label>
+                  <label class="bmi-checkbox-item">
+                    <input type="checkbox" class="bmi-checkbox" value="cvd">
+                    <span>Choroba sercowo-naczyniowa</span>
+                  </label>
+                </div>
+                <p class="bmi-counter" id="bmi-comorbidities-counter">Zaznaczono: 0/5</p>
+              </div>
+
+              <div class="bmi-user-info">
+                <h4>Dane kontaktowe (opcjonalnie)</h4>
+                <div class="bmi-user-info-row">
+                  <div class="bmi-field">
+                    <label for="bmi-name">Imię i nazwisko</label>
+                    <input type="text" id="bmi-name" placeholder="Jan Kowalski">
+                  </div>
+                  <div class="bmi-field">
+                    <label for="bmi-email">E-mail</label>
+                    <input type="email" id="bmi-email" placeholder="adres@poczta.pl">
+                  </div>
+                </div>
+                <div class="bmi-field">
+                  <label for="bmi-phone">Telefon</label>
+                  <input type="tel" id="bmi-phone" placeholder="123 456 789">
+                </div>
+              </div>
+
+              <button type="button" class="btn primary" id="bmi-calculate-btn">Oblicz BMI</button>
+            </div>
+
+            <div class="bmi-result-panel" aria-live="polite">
+              <div id="bmi-placeholder">
+                <p class="bmi-placeholder-text">Wprowadź dane, aby zobaczyć wynik i interpretację.</p>
+              </div>
+              <div id="bmi-result-section" style="display: none;">
+                <div class="bmi-value-display" id="bmi-value">--</div>
+                <div class="bmi-interpretation" id="bmi-interpretation">--</div>
+                
+                <div class="bmi-qualification" id="bmi-qualification-box">
+                  <p id="bmi-qualification-text">--</p>
+                </div>
+
+                <div class="bmi-actions" id="bmi-actions" style="display: none;">
+                  <a href="#" class="btn primary js-booking-link" id="bmi-booking-btn">Umów konsultację</a>
+                  <button type="button" class="btn ghost" id="bmi-contact-btn">Napisz wiadomość</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="bmi-disclaimer">Wynik ma charakter informacyjny i nie zastępuje porady lekarskiej.</p>
         </div>
       </div>
     </section>
@@ -338,5 +436,6 @@
   </footer>
 
   <script src="main.js"></script>
+  <script src="assets/js/bmi-calculator.js"></script>
 </body>
 </html>
