@@ -133,6 +133,28 @@
   object-fit: cover;
 }
 
+.meds-info-box {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 32px;
+  max-width: 800px;
+  margin-inline: auto;
+  border-left: 6px solid var(--brand);
+}
+
+.meds-info-box h4 {
+  margin-bottom: 12px;
+  color: var(--brand);
+}
+
+.meds-info-box p {
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.mt-40 { margin-top: 40px; }
+
 .med-content {
   padding: 32px;
   flex-grow: 1;

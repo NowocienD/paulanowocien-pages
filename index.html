@@ -234,34 +234,6 @@
                 <p class="bmi-counter" id="bmi-comorbidities-counter">Zaznaczono: 0/5</p>
               </div>
 
-              <div class="bmi-medication-selection">
-                <h4>Rozważana farmakoterapia</h4>
-                <div class="bmi-med-grid">
-                  <div class="bmi-field">
-                    <label for="bmi-med-type">Lek</label>
-                    <select id="bmi-med-type" class="bmi-select">
-                      <option value="wegovy">Wegovy (Semaglutyd)</option>
-                      <option value="mounjaro">Mounjaro (Tirzepatyd)</option>
-                      <option value="saxenda">Saxenda (Liraglutyd)</option>
-                      <option value="doctor-choice">Niech zdecyduje lekarz</option>
-                    </select>
-                  </div>
-                  <div class="bmi-field">
-                    <label>Etap leczenia</label>
-                    <div class="bmi-radio-group">
-                      <label class="bmi-radio-item">
-                        <input type="radio" name="med-status" value="new" checked>
-                        <span>Pierwszy raz</span>
-                      </label>
-                      <label class="bmi-radio-item">
-                        <input type="radio" name="med-status" value="continue">
-                        <span>Kontynuacja</span>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
               <div class="bmi-user-info">
                 <h4>Dane kontaktowe (opcjonalnie)</h4>
                 <div class="bmi-user-info-row">
@@ -302,6 +274,38 @@
               </div>
             </div>
           </div>
+          
+          <div class="bmi-medication-selection-standalone">
+            <div class="section-head mini">
+              <h4>Rozważana farmakoterapia</h4>
+              <p>Jeśli myślisz o wsparciu farmakologicznym, zaznacz interesujący Cię preparat.</p>
+            </div>
+            <div class="bmi-med-grid">
+              <div class="bmi-field">
+                <label for="bmi-med-type">Lek</label>
+                <select id="bmi-med-type" class="bmi-select">
+                  <option value="wegovy">Wegovy (Semaglutyd)</option>
+                  <option value="mounjaro">Mounjaro (Tirzepatyd)</option>
+                  <option value="saxenda">Saxenda (Liraglutyd)</option>
+                  <option value="doctor-choice">Niech zdecyduje lekarz</option>
+                </select>
+              </div>
+              <div class="bmi-field">
+                <label>Etap leczenia</label>
+                <div class="bmi-radio-group">
+                  <label class="bmi-radio-item">
+                    <input type="radio" name="med-status" value="new" checked>
+                    <span>Pierwszy raz</span>
+                  </label>
+                  <label class="bmi-radio-item">
+                    <input type="radio" name="med-status" value="continue">
+                    <span>Kontynuacja</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <p class="bmi-disclaimer">Wynik ma charakter informacyjny i nie zastępuje porady lekarskiej.</p>
         </div>
       </div>
