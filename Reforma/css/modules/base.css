@@ -63,5 +63,11 @@ h3 { font-size: 22px; line-height: 1.4; margin: 0 0 12px; }
 .brand-color { color: var(--brand); }
 .brand-2-color { color: var(--brand-2); }
 
+.mobile-only { display: none; }
+
+@media (max-width: 600px) {
+  .mobile-only { display: inline; }
+}
+
 section { padding: 80px 0; }
 .bg-alt { background: var(--bg-alt); }

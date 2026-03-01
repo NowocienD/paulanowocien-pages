@@ -155,18 +155,29 @@ input:focus, textarea:focus{
 }
 
 .bmi-medication-selection-standalone {
-  margin-top: 32px;
-  padding-top: 32px;
-  border-top: 2px solid var(--line);
+  margin-top: 60px;
+  padding-top: 60px;
+  border-top: 4px solid var(--line);
+  position: relative;
+}
+
+.bmi-medication-selection-standalone::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 100px;
+  height: 4px;
+  background: var(--brand);
 }
 
 .bmi-medication-selection-standalone .section-head.mini {
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 
-.bmi-medication-selection-standalone .section-head.mini h4 {
-  margin-bottom: 4px;
-  color: var(--brand);
+.bmi-medication-selection-standalone .section-head.mini h2 {
+  margin-bottom: 8px;
+  font-size: 28px;
 }
 
 .bmi-medication-selection-standalone .section-head.mini p {
