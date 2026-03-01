@@ -1,4 +1,9 @@
-(function() {
+import { CONFIG } from './config.js';
+
+/**
+ * Logic for BMI calculator and qualification.
+ */
+export function initBMICalculator() {
     const bmiInputWeight = document.getElementById('bmi-weight');
     const bmiInputHeight = document.getElementById('bmi-height');
     const bmiCheckboxes = document.querySelectorAll('.bmi-checkbox');
@@ -10,18 +15,20 @@
     const bmiCalculateBtn = document.getElementById('bmi-calculate-btn');
     const bmiResultSection = document.getElementById('bmi-result-section');
     const bmiPlaceholder = document.getElementById('bmi-placeholder');
-    
+
     const bmiActions = document.getElementById('bmi-actions');
     const bmiBookingBtn = document.getElementById('bmi-booking-btn');
     const bmiContactBtn = document.getElementById('bmi-contact-btn');
-    
+
     const bmiNameInput = document.getElementById('bmi-name');
     const bmiEmailInput = document.getElementById('bmi-email');
     const bmiPhoneInput = document.getElementById('bmi-phone');
 
+    if (!bmiInputWeight || !bmiInputHeight) return;
+
     function updateCounter() {
         const checked = document.querySelectorAll('.bmi-checkbox:checked').length;
-        bmiCounter.textContent = `Zaznaczono: ${checked}/5`;
+        if (bmiCounter) bmiCounter.textContent = `Zaznaczono: ${checked}/5`;
         return checked;
     }
 
@@ -35,8 +42,8 @@
     }
 
     function checkEligibility(bmi, comorbiditiesCount) {
-        if (bmi >= 30) return { eligible: true, reason: 'BMI >= 30.0' };
-        if (bmi >= 27 && comorbiditiesCount >= 1) return { eligible: true, reason: 'BMI >= 27.0 + choroby współistniejące' };
+        if (bmi >= 30) return { eligible: true };
+        if (bmi >= 27 && comorbiditiesCount >= 1) return { eligible: true };
         return { eligible: false };
     }
 
@@ -44,70 +51,71 @@
         const weightInput = bmiInputWeight.value.replace(',', '.');
         const heightInput = bmiInputHeight.value.replace(',', '.');
         const weight = parseFloat(weightInput);
-        const height = parseFloat(heightInput) / 100; // cm to m
-        
+        const height = parseFloat(heightInput) / 100;
+
         const errorWeight = document.getElementById('error-weight');
         const errorHeight = document.getElementById('error-height');
 
         let hasError = false;
 
         if (weightInput && (isNaN(weight) || weight < 20 || weight > 400)) {
-            errorWeight.style.display = 'block';
+            if (errorWeight) errorWeight.style.display = 'block';
             hasError = true;
         } else {
-            errorWeight.style.display = 'none';
+            if (errorWeight) errorWeight.style.display = 'none';
         }
 
         if (heightInput && (isNaN(height) || height < 1.2 || height > 2.3)) {
-            errorHeight.style.display = 'block';
+            if (errorHeight) errorHeight.style.display = 'block';
             hasError = true;
         } else {
-            errorHeight.style.display = 'none';
+            if (errorHeight) errorHeight.style.display = 'none';
         }
 
         if (hasError || !weightInput || !heightInput) {
-            bmiPlaceholder.style.display = 'block';
-            bmiResultSection.style.display = 'none';
+            if (bmiPlaceholder) bmiPlaceholder.style.display = 'block';
+            if (bmiResultSection) bmiResultSection.style.display = 'none';
             return;
         }
 
         const bmi = weight / (height * height);
         const bmiRounded = bmi.toFixed(1);
-        const comorbiditiesCount = updateCounter();
+        const comorbiditiesCount = Array.from(bmiCheckboxes).filter(cb => cb.checked).length;
         const eligibility = checkEligibility(bmi, comorbiditiesCount);
 
-        // Update UI
-        bmiPlaceholder.style.display = 'none';
-        bmiResultSection.style.display = 'block';
-        
-        bmiValueDisplay.textContent = bmiRounded;
-        bmiInterpretationDisplay.textContent = getInterpretation(bmi);
-        
-        if (eligibility.eligible) {
-            bmiQualificationBox.className = 'bmi-qualification eligible';
-            bmiQualificationDisplay.textContent = 'Kwalifikujesz się do leczenia otyłości.';
-            bmiBookingBtn.textContent = 'Umów konsultację';
-            bmiContactBtn.textContent = 'Napisz wiadomość';
-        } else {
-            bmiQualificationBox.className = 'bmi-qualification not-eligible';
-            bmiQualificationDisplay.textContent = 'Nie spełniasz kryteriów refundacji/wstępnej kwalifikacji wg tych kryteriów.';
-            bmiBookingBtn.textContent = 'Skonsultuj mimo to';
-            bmiContactBtn.textContent = 'Zadaj pytanie';
+        if (bmiPlaceholder) bmiPlaceholder.style.display = 'none';
+        if (bmiResultSection) bmiResultSection.style.display = 'block';
+
+        if (bmiValueDisplay) {
+            bmiValueDisplay.textContent = bmiRounded;
+            bmiValueDisplay.setAttribute('aria-label', `Twoje BMI wynosi ${bmiRounded}`);
         }
-        
-        bmiActions.style.display = 'flex';
-        
-        // Aria live update
-        bmiValueDisplay.setAttribute('aria-label', `Twoje BMI wynosi ${bmiRounded}`);
+        if (bmiInterpretationDisplay) bmiInterpretationDisplay.textContent = getInterpretation(bmi);
+
+        if (bmiQualificationBox && bmiQualificationDisplay) {
+            if (eligibility.eligible) {
+                bmiQualificationBox.className = 'bmi-qualification eligible';
+                bmiQualificationDisplay.textContent = 'Kwalifikujesz się do leczenia otyłości.';
+                if (bmiBookingBtn) bmiBookingBtn.textContent = 'Umów konsultację';
+                if (bmiContactBtn) bmiContactBtn.textContent = 'Napisz wiadomość';
+            } else {
+                bmiQualificationBox.className = 'bmi-qualification not-eligible';
+                bmiQualificationDisplay.textContent = 'Nie spełniasz kryteriów refundacji/wstępnej kwalifikacji wg tych kryteriów.';
+                if (bmiBookingBtn) bmiBookingBtn.textContent = 'Skonsultuj mimo to';
+                if (bmiContactBtn) bmiContactBtn.textContent = 'Zadaj pytanie';
+            }
+        }
+
+        if (bmiActions) bmiActions.style.display = 'flex';
     }
 
     function fillContactForm() {
         const weight = bmiInputWeight.value;
         const height = bmiInputHeight.value;
-        const bmi = bmiValueDisplay.textContent;
-        const interpretation = bmiInterpretationDisplay.textContent;
-        const isEligible = bmiQualificationBox.classList.contains('eligible');
-        
+        const bmi = bmiValueDisplay ? bmiValueDisplay.textContent : '';
+        const interpretation = bmiInterpretationDisplay ? bmiInterpretationDisplay.textContent : '';
+        const isEligible = bmiQualificationBox ? bmiQualificationBox.classList.contains('eligible') : false;
+
         const selectedDiseases = [];
         bmiCheckboxes.forEach(cb => {
             if (cb.checked) {
@@ -115,38 +123,34 @@
             }
         });
 
-        const name = bmiNameInput.value.trim();
-        const email = bmiEmailInput.value.trim();
-        const phone = bmiPhoneInput.value.trim();
+        const name = bmiNameInput ? bmiNameInput.value.trim() : '';
+        const email = bmiEmailInput ? bmiEmailInput.value.trim() : '';
+        const phone = bmiPhoneInput ? bmiPhoneInput.value.trim() : '';
 
         let messageBody = `Dzień dobry,\n\nChciałbym/Chciałabym skonsultować wyniki z kalkulatora BMI.\n`;
         messageBody += `Dane: Waga: ${weight} kg, Wzrost: ${height} cm, BMI: ${bmi} (${interpretation}).\n`;
-        
-        if (selectedDiseases.length > 0) {
-            messageBody += `Choroby współistniejące: ${selectedDiseases.join(', ')}.\n`;
-        } else {
-            messageBody += `Brak chorób współistniejących.\n`;
-        }
-
+        messageBody += selectedDiseases.length > 0 ? `Choroby współistniejące: ${selectedDiseases.join(', ')}.\n` : `Brak chorób współistniejących.\n`;
         messageBody += `Kwalifikacja: ${isEligible ? 'Spełniam kryteria' : 'Nie spełniam kryteriów'}.\n\n`;
-        
+
         if (name) messageBody += `Imię i nazwisko: ${name}\n`;
         if (phone) messageBody += `Telefon: ${phone}\n`;
         if (email) messageBody += `E-mail: ${email}\n`;
 
         const contactForm = document.getElementById('contactForm');
-        const messageArea = contactForm.querySelector('textarea[name="message"]');
-        const emailInput = contactForm.querySelector('input[name="email"]');
-        const nameInput = contactForm.querySelector('input[name="name"]');
+        if (contactForm) {
+            const messageArea = contactForm.querySelector('textarea[name="message"]');
+            const emailInput = contactForm.querySelector('input[name="email"]');
+            const nameInput = contactForm.querySelector('input[name="name"]');
 
-        if (messageArea) messageArea.value = messageBody;
-        if (email && emailInput) emailInput.value = email;
-        if (name && nameInput) nameInput.value = name;
+            if (messageArea) messageArea.value = messageBody;
+            if (email && emailInput) emailInput.value = email;
+            if (name && nameInput) nameInput.value = name;
 
-        contactForm.scrollIntoView({ behavior: 'smooth' });
+            contactForm.scrollIntoView({ behavior: 'smooth' });
+        }
     }
 
-    // Listeners
+    // Event listeners
     [bmiInputWeight, bmiInputHeight].forEach(input => {
         input.addEventListener('input', calculate);
     });
@@ -158,31 +162,26 @@
         });
     });
 
-    bmiCalculateBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        calculate();
-    });
-
-    bmiContactBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        fillContactForm();
-    });
-
-    // Medfile booking link
-    if (typeof CONFIG !== 'undefined' && CONFIG.bookingUrl) {
-        bmiBookingBtn.href = CONFIG.bookingUrl;
-        bmiBookingBtn.target = '_blank';
-    } else {
-        // Fallback or wait for main.js to load
-        document.addEventListener('DOMContentLoaded', () => {
-            if (typeof CONFIG !== 'undefined' && CONFIG.bookingUrl) {
-                bmiBookingBtn.href = CONFIG.bookingUrl;
-                bmiBookingBtn.target = '_blank';
-            }
+    if (bmiCalculateBtn) {
+        bmiCalculateBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            calculate();
         });
     }
 
-    // Initial counter
-    updateCounter();
+    if (bmiContactBtn) {
+        bmiContactBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            fillContactForm();
+        });
+    }
 
-})();
+    // Initialize Medfile booking link for the BMI section
+    if (bmiBookingBtn) {
+        bmiBookingBtn.href = CONFIG.bookingUrl;
+        bmiBookingBtn.target = '_blank';
+    }
+
+    // Initial counter setup
+    updateCounter();
+}

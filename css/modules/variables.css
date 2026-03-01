@@ -1,0 +1,25 @@
+:root{
+  --bg: #ffffff;
+  --bg-alt: #f8fafc;
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --line: #e2e8f0;
+
+  --brand: #0d9488;       /* Ciemniejszy morski */
+  --brand-light: #f0fdfa;
+  --brand-2: #10b981;     /* Szmaragdowy */
+  --accent: #f43f5e;      /* Akcent dla błędów/ważnych info */
+  
+  --ink: #020617;
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  --radius: 20px;
+  --radius-sm: 12px;
+  --radius-full: 9999px;
+
+  --container: 1200px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
