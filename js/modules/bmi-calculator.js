@@ -131,21 +131,23 @@ export function initBMICalculator() {
         const phone = bmiPhoneInput ? bmiPhoneInput.value.trim() : '';
 
         const medType = bmiMedType ? bmiMedType.options[bmiMedType.selectedIndex].text : '';
-        const medStatusValue = Array.from(bmiMedStatus).find(r => r.checked)?.value;
+    const medStatusValue = Array.from(bmiMedStatus).find(r => r.checked)?.value;
         const medStatusLabel = medStatusValue === 'new' ? 'Pierwszy raz' : 'Kontynuacja';
 
         let messageBody = `Dzień dobry,\n\nChciałbym/Chciałabym skonsultować wyniki z kalkulatora BMI.\n`;
-        messageBody += `Dane: Waga: ${weight} kg, Wzrost: ${height} cm, BMI: ${bmi} (${interpretation}).\n`;
+        if (bmiValueDisplay && bmiValueDisplay.textContent !== '--') {
+            messageBody += `Dane: Waga: ${weight} kg, Wzrost: ${height} cm, BMI: ${bmi} (${interpretation}).\n`;
+            messageBody += selectedDiseases.length > 0 ? `Choroby współistniejące: ${selectedDiseases.join(', ')}.\n` : `Brak chorób współistniejących.\n`;
+            messageBody += `Kwalifikacja: ${isEligible ? 'Spełniam kryteria' : 'Nie spełniam kryteriów'}.\n`;
+        }
         
         if (bmiMedType && bmiMedType.value !== 'none') {
             messageBody += `Rozważany lek: ${medType} (${medStatusLabel}).\n`;
         }
 
-        messageBody += selectedDiseases.length > 0 ? `Choroby współistniejące: ${selectedDiseases.join(', ')}.\n` : `Brak chorób współistniejących.\n`;
-        messageBody += `Kwalifikacja: ${isEligible ? 'Spełniam kryteria' : 'Nie spełniam kryteriów'}.\n\n`;
+        messageBody += `\n`;
 
         if (name) messageBody += `Imię i nazwisko: ${name}\n`;
-        if (phone) messageBody += `Telefon: ${phone}\n`;
         if (email) messageBody += `E-mail: ${email}\n`;
 
         const contactForm = document.getElementById('contactForm');

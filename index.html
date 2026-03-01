@@ -234,24 +234,6 @@
                 <p class="bmi-counter" id="bmi-comorbidities-counter">Zaznaczono: 0/5</p>
               </div>
 
-              <div class="bmi-user-info">
-                <h4>Dane kontaktowe (opcjonalnie)</h4>
-                <div class="bmi-user-info-row">
-                  <div class="bmi-field">
-                    <label for="bmi-name">Imię i nazwisko</label>
-                    <input type="text" id="bmi-name" placeholder="Jan Kowalski">
-                  </div>
-                  <div class="bmi-field">
-                    <label for="bmi-email">E-mail</label>
-                    <input type="email" id="bmi-email" placeholder="adres@poczta.pl">
-                  </div>
-                </div>
-                <div class="bmi-field">
-                  <label for="bmi-phone">Telefon</label>
-                  <input type="tel" id="bmi-phone" placeholder="123 456 789">
-                </div>
-              </div>
-
               <button type="button" class="btn primary" id="bmi-calculate-btn">Oblicz BMI</button>
             </div>
 
@@ -275,37 +257,6 @@
             </div>
           </div>
           
-          <div class="bmi-medication-selection-standalone section-divider">
-            <div class="section-head mini">
-              <h2>2. Rozważana farmakoterapia</h2>
-              <p>Jeśli myślisz o wsparciu farmakologicznym, zaznacz interesujący Cię preparat, abyśmy mogli lepiej przygotować się do Twojej konsultacji.</p>
-            </div>
-            <div class="bmi-med-grid">
-              <div class="bmi-field">
-                <label for="bmi-med-type">Lek</label>
-                <select id="bmi-med-type" class="bmi-select">
-                  <option value="wegovy">Wegovy (Semaglutyd)</option>
-                  <option value="mounjaro">Mounjaro (Tirzepatyd)</option>
-                  <option value="saxenda">Saxenda (Liraglutyd)</option>
-                  <option value="doctor-choice">Niech zdecyduje lekarz</option>
-                </select>
-              </div>
-              <div class="bmi-field">
-                <label>Etap leczenia</label>
-                <div class="bmi-radio-group">
-                  <label class="bmi-radio-item">
-                    <input type="radio" name="med-status" value="new" checked>
-                    <span>Pierwszy raz</span>
-                  </label>
-                  <label class="bmi-radio-item">
-                    <input type="radio" name="med-status" value="continue">
-                    <span>Kontynuacja</span>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-
           <p class="bmi-disclaimer">Wynik ma charakter informacyjny i nie zastępuje porady lekarskiej.</p>
         </div>
       </div>
@@ -397,13 +348,43 @@
             <div class="form-row">
               <label>
                 Twoje imię
-                <input type="text" name="name" placeholder="Np. Jan Kowalski" autocomplete="name" />
+                <input type="text" name="name" id="bmi-name" placeholder="Np. Jan Kowalski" autocomplete="name" />
               </label>
               <label>
                 Twój e-mail
-                <input type="email" name="email" placeholder="np. adres@poczta.pl" autocomplete="email" required />
+                <input type="email" name="email" id="bmi-email" placeholder="np. adres@poczta.pl" autocomplete="email" required />
               </label>
             </div>
+            
+            <div class="medication-selection-box">
+              <h3>Rozważana farmakoterapia (opcjonalnie)</h3>
+              <div class="form-row">
+                <label>
+                  Lek
+                  <select id="bmi-med-type" name="med-type">
+                    <option value="none">-- Wybierz lek (opcjonalnie) --</option>
+                    <option value="wegovy">Wegovy (Semaglutyd)</option>
+                    <option value="mounjaro">Mounjaro (Tirzepatyd)</option>
+                    <option value="saxenda">Saxenda (Liraglutyd)</option>
+                    <option value="doctor-choice">Niech zdecyduje lekarz</option>
+                  </select>
+                </label>
+                <label>
+                  Etap leczenia
+                  <div class="bmi-radio-group" style="margin-top: 10px;">
+                    <label class="bmi-radio-item">
+                      <input type="radio" name="med-status" value="new" checked>
+                      <span>Pierwszy raz</span>
+                    </label>
+                    <label class="bmi-radio-item">
+                      <input type="radio" name="med-status" value="continue">
+                      <span>Kontynuacja</span>
+                    </label>
+                  </div>
+                </label>
+              </div>
+            </div>
+
             <label>
               Wiadomość
               <textarea name="message" rows="4" placeholder="W czym mogę Ci pomóc?" required></textarea>

@@ -327,6 +327,211 @@
 }
 
 
+/* Approach Section Enhancements */
+.approach-benefits {
+  margin-top: 32px;
+  display: grid;
+  gap: 24px;
+}
+
+.approach-item {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  align-items: start;
+  gap: 16px;
+}
+
+.approach-item .icon {
+  width: 48px;
+  height: 48px;
+  background: var(--brand-light);
+  color: var(--brand);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.approach-item strong {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+
+.commitment-card {
+  background: var(--ink);
+  color: white;
+  padding: 40px;
+  border-radius: 32px;
+  box-shadow: var(--shadow-lg);
+}
+
+.commitment-card h3 {
+  color: white;
+  margin-bottom: 16px;
+}
+
+.commitment-card p {
+  color: #94a3b8;
+  margin-bottom: 24px;
+}
+
+.check-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.check-list li {
+  position: relative;
+  padding-left: 28px;
+  font-size: 15px;
+}
+
+.check-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--brand-2);
+  font-weight: 800;
+}
+
+/* Treatment Process Section */
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.process-step {
+  position: relative;
+  padding: 32px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  transition: var(--transition);
+}
+
+.process-step:hover {
+  border-color: var(--brand);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+}
+
+.step-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--brand);
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.process-step h4 {
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+.process-step p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.process-note {
+  background: var(--brand-light);
+  padding: 24px;
+  border-radius: 16px;
+  border-left: 4px solid var(--brand);
+  text-align: center;
+}
+
+.process-note p {
+  margin: 0;
+  font-size: 16px;
+  color: var(--text);
+}
+
+/* Image Integration Fixes */
+.med-image-placeholder {
+  height: 200px; /* Reduced fixed height */
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+
+.med-image-placeholder::after {
+  display: none; /* Hide placeholder text when image is present */
+}
+
+.clinic-gallery {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  height: 100%;
+}
+
+.gallery-item.main {
+  min-height: 400px;
+}
+
+.gallery-side {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 24px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.gallery-placeholder {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--brand-light);
+  border: 2px dashed var(--brand);
+  padding: 24px;
+  text-align: center;
+}
+
+.gallery-caption {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
 /* Accordion */
 .acc-item {
   border: 1px solid var(--line);
