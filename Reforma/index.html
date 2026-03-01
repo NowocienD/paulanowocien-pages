@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="reForma – nowoczesna przychodnia. Fakty, Organizacja, Realizacja, Monitoring, Adaptacja. Kompleksowe leczenie otyłości." />
+  <title>reForma – Przychodnia Nowej Generacji</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Przejdź do treści</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="Strona główna">
+        <div class="brand-mark">R</div>
+        <div class="brand-text">
+          <strong>reForma</strong>
+          <span>Przychodnia</span>
+        </div>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#offer">Oferta</a>
+        <a href="#forma">Wartości</a>
+        <a href="#approach">Podejście</a>
+        <a href="#contact" class="btn primary small">Umów konsultację</a>
+      </nav>
+
+      <button class="nav-toggle" aria-label="Menu">
+        <!-- Ikona menu (hamburger) -->
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="badge">Twoje zdrowie w nowej formie</div>
+          <h1>Odzyskaj formę z profesjonalnym wsparciem</h1>
+          <p class="lead">
+            Nie jesteś kolejnym numerem w kolejce. W reFormie łączymy wiedzę medyczną z partnerskim podejściem, by pomóc Ci osiągnąć trwałe rezultaty w leczeniu otyłości i poprawie zdrowia.
+          </p>
+          <div class="hero-actions">
+            <a href="#offer" class="btn primary">Sprawdź pakiety opieki</a>
+            <a href="#forma" class="btn ghost">Poznaj naszą metodę</a>
+          </div>
+        </div>
+        <div class="hero-media">
+          <!-- Tu może być grafika lub zdjęcie zespołu -->
+          <div style="background: var(--brand-light); aspect-ratio: 1; border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- METODA FORMA -->
+    <section id="forma" class="bg-alt">
+      <div class="container">
+        <div class="section-head center">
+          <h2>Nasza filozofia to FORMA</h2>
+          <p class="lead">Pięć filarów, na których budujemy Twój sukces i zdrowie.</p>
+        </div>
+        
+        <div class="forma-grid">
+          <div class="forma-item">
+            <span class="forma-letter">F</span>
+            <span class="forma-title">Fakty</span>
+            <p class="muted">Opieramy się na EBM – medycynie opartej na dowodach, nie na chwilowych modach.</p>
+          </div>
+          <div class="forma-item">
+            <span class="forma-letter">O</span>
+            <span class="forma-title">Organizacja</span>
+            <p class="muted">Planujemy proces leczenia tak, by pasował do Twojego planu dnia i możliwości.</p>
+          </div>
+          <div class="forma-item">
+            <span class="forma-letter">R</span>
+            <span class="forma-title">Realizacja</span>
+            <p class="muted">Wspólnie wdrażamy zmiany krok po kroku, zapewniając stałe wsparcie specjalistów.</p>
+          </div>
+          <div class="forma-item">
+            <span class="forma-letter">M</span>
+            <span class="forma-title">Monitoring</span>
+            <p class="muted">Regularnie sprawdzamy wyniki i postępy, byś widział sens swoich działań.</p>
+          </div>
+          <div class="forma-item">
+            <span class="forma-letter">A</span>
+            <span class="forma-title">Adaptacja</span>
+            <p class="muted">Elastycznie reagujemy na Twoje potrzeby i styl życia. Bo plan musi działać w praktyce.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OFERTA / PAKIETY -->
+    <section id="offer">
+      <div class="container">
+        <div class="section-head center">
+          <h2>Wybierz swój zakres opieki</h2>
+          <p class="lead">Zamiast szukać lekarzy na własną rękę, skorzystaj z gotowych rozwiązań dopasowanych do Twoich potrzeb.</p>
+        </div>
+
+        <div class="grid-3">
+          <!-- Pakiet 1 -->
+          <div class="card">
+            <div class="tag">Podstawowy</div>
+            <h3>Opieka Obesitologa</h3>
+            <p class="muted">Dla osób potrzebujących profesjonalnej diagnozy i prowadzenia farmakologicznego.</p>
+            <div class="price-tag">od 250 PLN <span>/ wizyta</span></div>
+            <ul class="card-list">
+              <li>Konsultacja lekarza specjalisty</li>
+              <li>Analiza wyników badań</li>
+              <li>Plan farmakoterapii</li>
+              <li>E-recepty i e-zwolnienia</li>
+            </ul>
+            <a href="#contact" class="btn ghost mt-auto">Wybieram ten pakiet</a>
+          </div>
+
+          <!-- Pakiet 2 -->
+          <div class="card featured">
+            <div class="tag">Najczęściej wybierany</div>
+            <h3>Duo: Lekarz + Dietetyk</h3>
+            <p class="muted">Kompleksowe podejście łączące leczenie medyczne z nauką nowych nawyków żywieniowych.</p>
+            <div class="price-tag">od 450 PLN <span>/ miesiąc</span></div>
+            <ul class="card-list">
+              <li>Wszystko co w pakiecie podstawowym</li>
+              <li>Stała opieka dietetyka klinicznego</li>
+              <li>Indywidualny plan żywieniowy</li>
+              <li>Konsultacje wyników badań</li>
+            </ul>
+            <a href="#contact" class="btn primary mt-auto">Zaczynamy!</a>
+          </div>
+
+          <!-- Pakiet 3 -->
+          <div class="card">
+            <div class="tag">Premium</div>
+            <h3>Full Form: Team 360°</h3>
+            <p class="muted">Najwyższy poziom wsparcia dla trwałych efektów i dbania o dobrostan psychiczny.</p>
+            <div class="price-tag">od 700 PLN <span>/ miesiąc</span></div>
+            <ul class="card-list">
+              <li>Lekarz + Dietetyk + Psychiatra</li>
+              <li>Wsparcie psychologiczne</li>
+              <li>Priorytetowe terminy</li>
+              <li>Dedykowany czat ze specjalistami</li>
+            </ul>
+            <a href="#contact" class="btn ghost mt-auto">Chcę pełną opiekę</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PODEJŚCIE / PERSONALIZACJA -->
+    <section id="approach" class="bg-alt">
+      <div class="container">
+        <div class="grid-2">
+          <div>
+            <h2>Młoda kadra, nowoczesne podejście</h2>
+            <p class="lead">
+              Jesteśmy zespołem ambitnych specjalistów, którzy rozumieją wyzwania dzisiejszego świata. Nie oceniamy – wspieramy. 
+            </p>
+            <p>
+              Personalizujemy konsultację pod Twój styl i dobieramy specjalistów do Twoich oczekiwań. Powiedz nam, jakiej współpracy potrzebujesz:
+            </p>
+          </div>
+          <div style="display: grid; gap: 20px;">
+            <div class="approach-box empathy">
+              <h3>Wolisz empatię?</h3>
+              <p class="muted">Zapewnimy Ci powolne dochodzenie do źródła problemu, pełne zrozumienie i wspierającą atmosferę na każdym kroku.</p>
+            </div>
+            <div class="approach-box speed">
+              <h3>Cenisz konkret?</h3>
+              <p class="muted">Dobierzemy specjalistę, który stawia na szybkość działania, konkretne zalecenia i podejście "bez owijania w bawełnę".</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section id="contact">
+      <div class="container">
+        <div class="card" style="max-width: 800px; margin: 0 auto; text-align: center;">
+          <h2>Zrób pierwszy krok do reFormy</h2>
+          <p class="lead">Zostaw kontakt do siebie lub umów się bezpośrednio przez kalendarz online.</p>
+          <div class="hero-actions" style="justify-content: center; margin-top: 32px;">
+            <a href="#" class="btn primary">Umów wizytę online</a>
+            <a href="tel:+48123456789" class="btn ghost">Zadzwoń do nas</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="brand" style="margin-bottom: 20px;">
+            <div class="brand-mark">R</div>
+            <strong style="font-size: 24px;">reForma</strong>
+          </div>
+          <p style="color: #94a3b8; max-width: 300px;">
+            Nowoczesna przychodnia leczenia otyłości i zaburzeń metabolicznych.
+          </p>
+        </div>
+        <div>
+          <h4>Nawigacja</h4>
+          <ul class="footer-links">
+            <li><a href="#offer">Oferta</a></li>
+            <li><a href="#forma">Wartości</a></li>
+            <li><a href="#approach">Podejście</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Kontakt</h4>
+          <ul class="footer-links">
+            <li>ul. Nowoczesna 12, Warszawa</li>
+            <li>kontakt@przychodniareforma.pl</li>
+            <li>+48 123 456 789</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 reForma Przychodnia. Wszystkie prawa zastrzeżone.
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+:root {
+  /* Podstawowe kolory - nowocześniejsza, profesjonalna paleta */
+  --bg: #ffffff;
+  --bg-alt: #f1f5f9;
+  --text: #0f172a;
+  --text-muted: #475569;
+  --line: #e2e8f0;
+
+  /* Kolory marki - reForma (Indygo / Niebieski / Turkus) */
+  --brand: #2563eb;       /* Royal Blue - profesjonalizm i energia */
+  --brand-light: #eff6ff;
+  --brand-dark: #1e40af;
+  --brand-2: #0ea5e9;     /* Sky Blue */
+  --accent: #f43f5e;      /* Akcent dla ważnych informacji */
+  
+  --ink: #020617;
+
+  /* Cienie i zaokrąglenia */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-full: 9999px;
+
+  --container: 1100px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Typografia */
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+}
