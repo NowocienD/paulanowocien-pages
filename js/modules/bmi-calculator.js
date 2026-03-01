@@ -24,6 +24,9 @@ export function initBMICalculator() {
     const bmiEmailInput = document.getElementById('bmi-email');
     const bmiPhoneInput = document.getElementById('bmi-phone');
 
+    const bmiMedType = document.getElementById('bmi-med-type');
+    const bmiMedStatus = document.getElementsByName('med-status');
+
     if (!bmiInputWeight || !bmiInputHeight) return;
 
     function updateCounter() {
@@ -127,8 +130,17 @@ export function initBMICalculator() {
         const email = bmiEmailInput ? bmiEmailInput.value.trim() : '';
         const phone = bmiPhoneInput ? bmiPhoneInput.value.trim() : '';
 
+        const medType = bmiMedType ? bmiMedType.options[bmiMedType.selectedIndex].text : '';
+        const medStatusValue = Array.from(bmiMedStatus).find(r => r.checked)?.value;
+        const medStatusLabel = medStatusValue === 'new' ? 'Pierwszy raz' : 'Kontynuacja';
+
         let messageBody = `Dzień dobry,\n\nChciałbym/Chciałabym skonsultować wyniki z kalkulatora BMI.\n`;
         messageBody += `Dane: Waga: ${weight} kg, Wzrost: ${height} cm, BMI: ${bmi} (${interpretation}).\n`;
+        
+        if (bmiMedType && bmiMedType.value !== 'none') {
+            messageBody += `Rozważany lek: ${medType} (${medStatusLabel}).\n`;
+        }
+
         messageBody += selectedDiseases.length > 0 ? `Choroby współistniejące: ${selectedDiseases.join(', ')}.\n` : `Brak chorób współistniejących.\n`;
         messageBody += `Kwalifikacja: ${isEligible ? 'Spełniam kryteria' : 'Nie spełniam kryteriów'}.\n\n`;
 

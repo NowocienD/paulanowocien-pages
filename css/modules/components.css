@@ -147,6 +147,55 @@ input:focus, textarea:focus{
   margin-top: 40px;
 }
 
+.bmi-medication-selection {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.bmi-med-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 24px;
+}
+
+.bmi-select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #f8fafc;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.bmi-radio-group {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.bmi-radio-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.bmi-radio-item input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--brand);
+}
+
+@media (max-width: 600px) {
+  .bmi-med-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
 .bmi-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;

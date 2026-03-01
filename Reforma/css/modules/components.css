@@ -87,13 +87,13 @@
 /* FORMA Grid */
 .forma-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
   margin-top: 48px;
 }
 
 .forma-item {
-  padding: 24px;
+  padding: 20px 16px;
   background: white;
   border-radius: var(--radius);
   border-bottom: 4px solid var(--brand);
@@ -101,11 +101,16 @@
   transition: var(--transition);
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 0;
 }
 
 .forma-item.re-item {
   border-bottom-color: var(--brand-2);
   background: var(--brand-light);
+  position: relative;
+  overflow: hidden;
 }
 
 .forma-item:hover {
@@ -114,7 +119,7 @@
 }
 
 .forma-letter {
-  font-size: 40px;
+  font-size: 32px;
   font-weight: 900;
   color: var(--brand);
   display: block;
@@ -124,14 +129,109 @@
 
 .re-item .forma-letter {
   color: var(--brand-2);
+  position: relative;
+  z-index: 2;
 }
 
 .forma-title {
   font-weight: 700;
-  font-size: 18px;
+  font-size: 15px;
   display: block;
   margin-bottom: 8px;
   color: var(--ink);
+}
+
+.forma-item p {
+  font-size: 13px;
+  margin: 0;
+  line-height: 1.4;
+}
+
+@media (max-width: 1100px) {
+  .forma-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .forma-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  
+  .forma-item.re-item {
+    grid-column: span 2;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 15px;
+    background: linear-gradient(135deg, var(--brand-light) 0%, #fff 100%);
+  }
+
+  .re-item .forma-letter {
+    font-size: 48px;
+    margin-bottom: 0;
+    text-shadow: 2px 2px 0px rgba(16, 185, 129, 0.1);
+    animation: pulse-soft 2s infinite;
+  }
+
+  @keyframes pulse-soft {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+
+  .re-item .forma-title {
+    margin-bottom: 0;
+    font-size: 18px;
+  }
+
+  .re-item p {
+    display: none;
+  }
+}
+
+/* Meds Cards */
+.meds-cards {
+  display: grid;
+  gap: 16px;
+}
+
+.med-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  transition: var(--transition);
+}
+
+.med-card:hover {
+  border-color: var(--brand);
+  transform: translateX(8px);
+}
+
+.med-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  gap: 12px;
+}
+
+.med-header strong {
+  font-size: 16px;
+  color: var(--ink);
+}
+
+.tag-med {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--brand);
+  background: var(--brand-light);
+  padding: 4px 10px;
+  border-radius: 99px;
+  white-space: nowrap;
 }
 
 /* Accordion */
