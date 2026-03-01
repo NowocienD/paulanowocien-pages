@@ -87,18 +87,25 @@
 /* FORMA Grid */
 .forma-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
   margin-top: 48px;
 }
 
 .forma-item {
-  padding: 32px;
+  padding: 24px;
   background: white;
   border-radius: var(--radius);
   border-bottom: 4px solid var(--brand);
   box-shadow: var(--shadow-sm);
   transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.forma-item.re-item {
+  border-bottom-color: var(--brand-2);
+  background: var(--brand-light);
 }
 
 .forma-item:hover {
@@ -107,12 +114,16 @@
 }
 
 .forma-letter {
-  font-size: 48px;
+  font-size: 40px;
   font-weight: 900;
   color: var(--brand);
   display: block;
   margin-bottom: 8px;
   line-height: 1;
+}
+
+.re-item .forma-letter {
+  color: var(--brand-2);
 }
 
 .forma-title {
